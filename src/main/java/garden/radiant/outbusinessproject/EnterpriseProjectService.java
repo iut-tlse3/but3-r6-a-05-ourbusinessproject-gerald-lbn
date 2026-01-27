@@ -15,7 +15,7 @@ public class EnterpriseProjectService {
         return  this.entityManager;
     }
 
-    public Project newProject(String title, String description) {
+    public Project newProject(String title, String description, Enterprise enterprise) {
         Project p = new Project();
         p.setTitle(title);
         p.setDescription(description);
@@ -35,10 +35,20 @@ public class EnterpriseProjectService {
         e.setContactName(aContactName);
         e.setContactEmail(mail);
         this.entityManager.persist(e);
+        this.entityManager.flush();
         return e;
     }
 
     public Enterprise findEnterpriseById(Long id) {
         return this.entityManager.find(Enterprise.class, id);
+    }
+
+    public Project newProject(String aTitle, String aDescription) {
+        Project p = new Project();
+        p.setTitle(aTitle);
+        p.setDescription(aDescription);
+        this.entityManager.persist(p);
+        this.entityManager.flush();
+        return p;
     }
 }

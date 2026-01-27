@@ -26,10 +26,6 @@ public class Enterprise {
 
     Enterprise() {}
 
-    Long getId() {
-        return this.id;
-    }
-
     void setName(String name) {
         this.name = name;
     }
@@ -44,5 +40,9 @@ public class Enterprise {
 
     void setContactEmail(String contactEmail) {
         this.contactEmail = contactEmail;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 }
