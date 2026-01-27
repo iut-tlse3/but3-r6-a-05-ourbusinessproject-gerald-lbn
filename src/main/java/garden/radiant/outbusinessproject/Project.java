@@ -18,6 +18,10 @@ public class Project {
 
     Project() {}
 
+    public Long getId() {
+        return this.id;
+    }
+
     void setTitle(String title) {
         this.title = title;
     }

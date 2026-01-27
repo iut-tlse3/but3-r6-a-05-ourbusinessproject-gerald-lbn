@@ -26,6 +26,10 @@ public class Enterprise {
 
     Enterprise() {}
 
+    Long getId() {
+        return this.id;
+    }
+
     void setName(String name) {
         this.name = name;
     }
