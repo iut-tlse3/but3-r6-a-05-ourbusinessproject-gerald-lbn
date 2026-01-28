@@ -2,7 +2,10 @@ package garden.radiant.outbusinessproject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service()
 public class EnterpriseProjectService {
@@ -54,5 +57,11 @@ public class EnterpriseProjectService {
         this.entityManager.persist(p);
         this.entityManager.flush();
         return p;
+    }
+
+    public List<Project> findAllProjects() {
+        String query = "SELECT p FROM Project p order by p.title";
+        TypedQuery<Project> projects = this.entityManager.createQuery(query, Project.class);
+        return projects.getResultList();
     }
 }
