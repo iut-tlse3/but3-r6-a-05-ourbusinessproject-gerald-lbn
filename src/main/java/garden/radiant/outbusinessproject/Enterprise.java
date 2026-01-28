@@ -5,6 +5,10 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+
 @Entity()
 public class Enterprise {
     @Id
@@ -20,6 +24,8 @@ public class Enterprise {
     @NotEmpty()
     @Email()
     private String contactEmail;
+    @OneToMany(mappedBy = "enterprise")
+    private Collection<Project> projects;
 
     Enterprise() {}
 
@@ -42,4 +48,17 @@ public class Enterprise {
     public Long getId() {
         return this.id;
     }
+
+    public Collection<Project> getProjects() {
+        return this.projects;
+    }
+
+    public void addProject(Project p) {
+        if (this.projects == null) {
+            this.projects = new HashSet<Project>();
+        }
+
+        this.projects.add(p);
+    }
+
 }
