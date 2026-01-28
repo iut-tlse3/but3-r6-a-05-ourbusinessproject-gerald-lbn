@@ -2,7 +2,9 @@ package garden.radiant.outbusinessproject;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import org.springframework.stereotype.Service;
 
+@Service()
 public class EnterpriseProjectService {
     @PersistenceContext
     private EntityManager entityManager;
@@ -19,6 +21,7 @@ public class EnterpriseProjectService {
         Project p = new Project();
         p.setTitle(title);
         p.setDescription(description);
+        p.setEnterprise(enterprise);
         this.entityManager.persist(p);
         this.entityManager.flush();
         return p;
