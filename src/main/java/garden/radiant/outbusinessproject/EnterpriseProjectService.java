@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service()
+@Service
 public class EnterpriseProjectService {
     @PersistenceContext
     private EntityManager entityManager;
@@ -48,15 +48,6 @@ public class EnterpriseProjectService {
 
     public Enterprise findEnterpriseById(Long id) {
         return this.entityManager.find(Enterprise.class, id);
-    }
-
-    public Project newProject(String aTitle, String aDescription) {
-        Project p = new Project();
-        p.setTitle(aTitle);
-        p.setDescription(aDescription);
-        this.entityManager.persist(p);
-        this.entityManager.flush();
-        return p;
     }
 
     public List<Project> findAllProjects() {
