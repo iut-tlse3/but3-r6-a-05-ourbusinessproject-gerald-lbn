@@ -23,6 +23,8 @@ public class InitializationService {
 
     /**
      * Initialization of the initial list of projects
+     * La méthode ayant l'annotation @Transactional, si une des requetes échoue, alors il y a un rollback
+     * d'où le fait qu'il n'y ait bien aucun projets dans la BD.
      */
     @Transactional
     public void initProjects() {
